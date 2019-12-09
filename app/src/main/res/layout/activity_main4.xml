@@ -17,6 +17,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10px"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             >
 
             <EditText
@@ -25,7 +27,6 @@
                 android:layout_height="wrap_content"
                 android:hint="Search Here"
                 android:backgroundTint="#fff"
-                android:focusableInTouchMode="true"
                 android:layout_weight="1"
                 />
             <Button
