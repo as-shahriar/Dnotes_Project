@@ -137,53 +137,6 @@ public class Main4Activity extends AppCompatActivity {
         });
         list.setLongClickable(true);
 
-        list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
-
-                malert=new AlertDialog.Builder(Main4Activity .this);
-                malert.setTitle("Delete");
-                malert.setMessage("Are you sure to delete this item?");
-                malert.setIcon(R.drawable.ic_action_delete);
-                malert.setCancelable(false);
-                malert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Main4Activity .database.execSQL("delete from info where id='"+(position+1)+"';");
-                        Toast.makeText(Main4Activity .this,"Deleted",Toast.LENGTH_SHORT).show();
-
-                        Cursor cursor = database.rawQuery("select * from info;",null);
-                        if (cursor.moveToFirst()){
-                            do {
-                                int id=cursor.getInt(0);
-                                if(position+1<id){
-
-                                    database.execSQL("update info set id='"+(id-1)+"' where id='"+id+"';");
-
-                                }
-                            }while (cursor.moveToNext());
-                        }
-                        cursor.close();
-
-                        finish();
-                        startActivity(getIntent());
-                    }
-                });
-
-                malert.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-
-                malert.create();
-                malert.show();
-
-
-                return true;
-            }
-        });
 
 
 
